@@ -1,5 +1,6 @@
 package com.woomzip.common.exception;
 
+import com.woomzip.common.exception.apivendor.VendorException;
 import com.woomzip.common.response.ApplicationResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -8,10 +9,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.NoSuchElementException;
 
-/**
- * Controller Layer에서 발생하는 예외를 처리하는 것이지
- * Filter 단의 예외는 인식하지 못한다...!
- */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -30,7 +27,15 @@ public class GlobalExceptionHandler {
         return ResponseEntity.internalServerError().body(ApplicationResponse.server(null, e.getMessage()));
     }
 
-    // Add other specific exception handlers below
+
+    @ExceptionHandler(VendorException.class)
+    protected ResponseEntity<ApplicationResponse<String>> handleVendorException(VendorException e) {
+        // Return the custom response with the appropriate HTTP status code
+        return new ResponseEntity<>(
+                ApplicationResponse.custom(e.getMessage(), e.getErrorCode().getHttpStatus().value(), e.getErrorCode().getHttpStatus().getReasonPhrase()),
+                e.getErrorCode().getHttpStatus()
+        );
+    }
 
     @ExceptionHandler(RuntimeException.class)
     protected ResponseEntity<ApplicationResponse<Void>> handleRuntimeException(RuntimeException e) {
