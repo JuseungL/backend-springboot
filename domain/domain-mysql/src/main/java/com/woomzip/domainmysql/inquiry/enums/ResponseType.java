@@ -1,7 +1,7 @@
 package com.woomzip.domainmysql.inquiry.enums;
 
 public enum ResponseType {
-    PHONE("전화"),
+    CALL("전화"),
     MESSAGE("문자");
 
     private final String description;
