@@ -21,10 +21,11 @@ public class ProductCommandService {
 
     // 제품 생성 메서드
     @Transactional
-    public Product createProduct(ProductCreateRequest request, Vendor vendor) {
+    public void createProduct(ProductCreateRequest request, Vendor vendor) {
         // 제품 엔티티 생성
         Product product = new Product(
                 request.productName(),
+                request.productImageUrl(),
                 request.price(),
                 request.bedroom(),
                 request.bathroom(),
@@ -51,29 +52,17 @@ public class ProductCommandService {
 
         productRepository.save(product);
 
-        // 템플릿 목록 저장
         List<ProductTemplate> templates = request.templates().stream()
                 .map(templateRequest -> new ProductTemplate(
                         templateRequest.title(),
                         templateRequest.description(),
-                        templateRequest.productImageUrl(),
+                        templateRequest.productTemplateImageUrl(),
                         product,
                         templateRequest.productTemplateType(),
                         templateRequest.index()
                 ))
                 .toList();
         productTemplateRepository.saveAll(templates);
-
-        return product;
     }
 
-    // 제품 조회 메서드
-//    public Product getProductById(Long productId) {
-//        return productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
-//    }
-//
-//    // 템플릿 조회 메서드
-//    public List<ProductTemplate> getProductTemplates(Long productId) {
-//        return productTemplateRepository.findByProductId(productId);
-//    }
 }

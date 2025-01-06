@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -20,6 +22,9 @@ public class Product extends BaseTimeEntity {
 
     @Column(name = "product_name", nullable = false)
     private String productName;  // 제품 이름
+
+    @Column(name = "product_image_url", nullable = false)
+    private String productImageUrl;  // 제품 이미지
 
     @Column(name = "price", nullable = false)
     private int price;  // 가격
@@ -88,9 +93,14 @@ public class Product extends BaseTimeEntity {
     @Column(name = "price_includes", length = 1000)
     private String priceIncludes;  // 가격에 포함된 사항
 
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductTemplate> productTemplates;
+
     @Builder
-    public Product(String productName, int price, int bedroom, Integer bathroom, Double realUsableArea, Double buildingArea, int warrantyPeriod, String specialFeature, String structureMaterial, String wallMaterial, String insulationMaterial, String heatingMethod, String interiorMaterial, String windowMaterial, String exteriorMaterial, String roofMaterial, String kitchenMaterial, String bathroomMaterial, String lightingMaterial, String includedFurniture, String otherDetail, Vendor vendor, String priceIncludes) {
+
+    public Product(String productName, String productImageUrl, int price, int bedroom, Integer bathroom, Double realUsableArea, Double buildingArea, int warrantyPeriod, String specialFeature, String structureMaterial, String wallMaterial, String insulationMaterial, String heatingMethod, String interiorMaterial, String windowMaterial, String exteriorMaterial, String roofMaterial, String kitchenMaterial, String bathroomMaterial, String lightingMaterial, String includedFurniture, String otherDetail, Vendor vendor, String priceIncludes) {
         this.productName = productName;
+        this.productImageUrl = productImageUrl;
         this.price = price;
         this.bedroom = bedroom;
         this.bathroom = bathroom;

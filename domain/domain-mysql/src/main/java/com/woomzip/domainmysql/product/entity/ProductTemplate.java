@@ -23,8 +23,8 @@ public class ProductTemplate {
     @Column(name = "description", nullable = false, length = 1000)
     private String description;
 
-    @Column(name = "product_image_url", nullable = false)
-    private String productImageUrl;
+    @Column(name = "product_template_image_url", nullable = false)
+    private String productTemplateImageUrl;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
@@ -39,10 +39,10 @@ public class ProductTemplate {
     private int index;
 
     @Builder
-    public ProductTemplate(String title, String description, String productImageUrl, Product product, ProductTemplateType productTemplateType, int index) {
+    public ProductTemplate(String title, String description, String productTemplateImageUrl, Product product, ProductTemplateType productTemplateType, int index) {
         this.title = title;
         this.description = description;
-        this.productImageUrl = productImageUrl;
+        this.productTemplateImageUrl = productTemplateImageUrl;
         this.product = product;
         this.productTemplateType = productTemplateType;
         this.index = index;

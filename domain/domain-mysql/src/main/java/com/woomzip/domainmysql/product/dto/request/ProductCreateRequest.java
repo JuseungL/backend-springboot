@@ -11,6 +11,10 @@ public record ProductCreateRequest(
         @NotNull(message = "제품 이름은 필수입니다.")
         String productName,
 
+        @Schema(description = "제품 이미지", example = "https://image1.jpg", required = true)
+        @NotNull(message = "제품 이미지는 필수입니다.")
+        String productImageUrl,
+
         @Schema(description = "가격", example = "500000", required = true)
         @NotNull(message = "가격은 필수입니다.")
         int price,
@@ -19,13 +23,13 @@ public record ProductCreateRequest(
         @NotNull(message = "침실 개수는 필수입니다.")
         int bedroom,
 
-        @Schema(description = "욕실 개수", example = "2", required = false)
+        @Schema(description = "욕실 개수", example = "2", required = true)
         Integer bathroom,
 
-        @Schema(description = "실사용 평수", example = "30.5", required = false)
+        @Schema(description = "실사용 평수", example = "30.5", required = true)
         Double realUsableArea,
 
-        @Schema(description = "건축 면적", example = "50.0", required = false)
+        @Schema(description = "건축 면적", example = "50.0", required = true)
         Double buildingArea,
 
         @Schema(description = "AS 보증기간", example = "1", required = true)
@@ -74,7 +78,7 @@ public record ProductCreateRequest(
         @Schema(description = "기타사항", example = "기타 사항 없음", required = false)
         String otherDetail,
 
-        @Schema(description = "디자인 및 제작사 ID", example = "123", required = true)
+        @Schema(description = "업체 ID", example = "1", required = true)
         @NotNull(message = "디자인 및 제작사 ID는 필수입니다.")
         Long vendorId,
 
@@ -94,10 +98,10 @@ public record ProductCreateRequest(
             @Schema(description = "템플릿 설명", example = "기본 설명", required = false)
             String description,
 
-            @Schema(description = "상품 이미지 URL", example = "http://example.com/image.jpg", required = false)
-            String productImageUrl,
+            @Schema(description = "제품 템플릿 이미지 URL", example = "http://example.com/image.jpg", required = false)
+            String productTemplateImageUrl,
 
-            @Schema(description = "템플릿 유형", example = "BASIC", required = true)
+            @Schema(description = "템플릿 유형", example = "FULL", required = true)
             @NotNull(message = "템플릿 유형은 필수입니다.")
             ProductTemplateType productTemplateType,
 
