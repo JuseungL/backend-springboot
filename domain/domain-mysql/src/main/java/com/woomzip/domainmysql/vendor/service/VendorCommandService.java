@@ -1,13 +1,13 @@
 package com.woomzip.domainmysql.vendor.service;
 
+import com.woomzip.common.annotation.DomainService;
 import com.woomzip.domainmysql.vendor.dto.request.VendorCreateRequest;
 import com.woomzip.domainmysql.vendor.entity.Vendor;
 import com.woomzip.domainmysql.vendor.repository.VendorRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
+@DomainService
 @RequiredArgsConstructor
 public class VendorCommandService {
     private final VendorRepository vendorRepository;

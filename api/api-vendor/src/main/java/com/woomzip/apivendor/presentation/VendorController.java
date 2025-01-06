@@ -1,10 +1,8 @@
 package com.woomzip.apivendor.presentation;
 
-import com.woomzip.apivendor.usecase.Impl.VendorCreateUseCaseImpl;
 import com.woomzip.apivendor.usecase.VendorCreateUseCase;
 import com.woomzip.common.response.ApplicationResponse;
 import com.woomzip.domainmysql.vendor.dto.request.VendorCreateRequest;
-import com.woomzip.domainmysql.vendor.entity.Vendor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

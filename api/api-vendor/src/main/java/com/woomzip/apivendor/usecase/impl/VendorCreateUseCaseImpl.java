@@ -1,14 +1,13 @@
-package com.woomzip.apivendor.usecase.Impl;
+package com.woomzip.apivendor.usecase.impl;
 
 import com.woomzip.apivendor.usecase.VendorCreateUseCase;
 import com.woomzip.common.annotation.ApplicationService;
 import com.woomzip.domainmysql.vendor.dto.request.VendorCreateRequest;
-import com.woomzip.domainmysql.vendor.entity.Vendor;
 import com.woomzip.domainmysql.vendor.service.VendorCommandService;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @ApplicationService
+@RequiredArgsConstructor
 public class VendorCreateUseCaseImpl implements VendorCreateUseCase {
     private final VendorCommandService vendorCommandService;
     @Override
