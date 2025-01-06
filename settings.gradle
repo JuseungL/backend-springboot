@@ -9,6 +9,9 @@ include 'domain:domain-mysql'
 // 모니터링 모듈
 include 'monitoring'
 
+// swagger - 문서화
+include 'documentation'
+
 // api 모듈
 include 'api:api-product' // 제품 관리 모듈 (External)
 include 'api:api-inquiry' // 문의 관리 모듈 (External)

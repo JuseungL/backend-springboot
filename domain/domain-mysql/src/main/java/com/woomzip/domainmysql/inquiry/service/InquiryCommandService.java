@@ -22,7 +22,6 @@ public class InquiryCommandService {
                 .contact(request.contact())
                 .responseType(request.responseType())
                 .productId(request.productId())
-                .productType(request.productType())
                 .purpose(request.purpose())
                 .location(request.location())
                 .isLandOwner(request.isLandOwner())

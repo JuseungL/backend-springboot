@@ -17,6 +17,7 @@ spring:
     import:
       - application-mysql-local.yml
       - application-monitoring-local.yml
+      - application-documentation-local.yml
 
 logging:
   level:
@@ -33,6 +34,7 @@ spring:
     import:
       - application-mysql-prod.yml
       - application-monitoring-prod.yml
+      - application-documentation-prod.yml
 logging:
   level:
     org.springframework.web: DEBUG

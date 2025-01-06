@@ -22,7 +22,7 @@ public class Inquiry extends BaseTimeEntity {
     @Column(name = "name", nullable = false, length = 50)
     private String name;
 
-    @Column(name = "additional_request", columnDefinition = "TEXT")
+    @Column(name = "additional_request", columnDefinition = "TEXT", nullable = true)
     private String additionalRequest;
 
     @Column(name = "contact", nullable = false, length = 50)
@@ -34,10 +34,6 @@ public class Inquiry extends BaseTimeEntity {
 
     @JoinColumn(name = "fk_product_id", nullable = true)
     private Long productId;
-
-    @Column(name = "product_type", nullable = false, length = 100)
-    @Enumerated(EnumType.STRING)
-    private ProductType productType;
 
     @Column(name = "purpose", nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
@@ -78,13 +74,12 @@ public class Inquiry extends BaseTimeEntity {
     private Priority priority;
 
     @Builder
-    public Inquiry(String name, String additionalRequest, String contact, ResponseType responseType, Long productId, ProductType productType, Purpose purpose, Location location, boolean isLandOwner, int budget, LandArea landArea, LandSlope landSlope, LandAccess landAccess, HelpType helpType, StartPlan startPlan, Priority priority) {
+    public Inquiry(String name, String additionalRequest, String contact, ResponseType responseType, Long productId, Purpose purpose, Location location, boolean isLandOwner, int budget, LandArea landArea, LandSlope landSlope, LandAccess landAccess, HelpType helpType, StartPlan startPlan, Priority priority) {
         this.name = name;
         this.additionalRequest = additionalRequest;
         this.contact = contact;
         this.responseType = responseType;
         this.productId = productId;
-        this.productType = productType;
         this.purpose = purpose;
         this.location = location;
         this.isLandOwner = isLandOwner;
