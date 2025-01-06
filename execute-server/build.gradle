@@ -1,0 +1,8 @@
+bootJar {enabled = true}
+jar {enabled = false}
+
+dependencies {
+    implementation project(':api:api-product')
+    implementation project(':api:api-vendor')
+    implementation project(':api:api-inquiry')
+}

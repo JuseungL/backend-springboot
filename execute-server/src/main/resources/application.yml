@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: execute-server
+
+  profiles:
+    active: local # 기본 프로파일을 'local'로 설정
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+      - application-mysql-local.yml
+      - application-monitoring-local.yml
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.boot.web.servlet: DEBUG
+    root: info
+    com.woomzip: debug
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+    import:
+      - application-mysql-prod.yml
+      - application-monitoring-prod.yml
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.boot.web.servlet: DEBUG
+    root: info
+    com.woomzip: debug
+

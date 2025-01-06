@@ -1,0 +1,18 @@
+rootProject.name = 'woomzip-server'
+
+// 공통 모듈
+include 'common'
+
+// Domain 모듈
+include 'domain:domain-mysql'
+
+// 모니터링 모듈
+include 'monitoring'
+
+// api 모듈
+include 'api:api-product' // 제품 관리 모듈 (External)
+include 'api:api-inquiry' // 문의 관리 모듈 (External)
+include 'api:api-vendor' // 업체 관리 모듈 (Internal)
+
+// 실행 모듈
+include 'execute-server'
