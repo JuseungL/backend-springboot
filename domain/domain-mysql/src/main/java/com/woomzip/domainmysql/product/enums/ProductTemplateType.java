@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public enum ProductTemplateType {
     FULL("FULL"),
     HALF("HALF"),
+    CARD_TITLE("CARD_TITLE"),
     CARD("CARD"),
     MASTER_PLAN("MASTER_PLAN");
 

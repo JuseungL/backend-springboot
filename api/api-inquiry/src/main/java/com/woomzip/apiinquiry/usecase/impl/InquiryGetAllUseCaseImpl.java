@@ -1,5 +1,6 @@
-package com.woomzip.apiinquiry.usecase;
+package com.woomzip.apiinquiry.usecase.impl;
 
+import com.woomzip.apiinquiry.usecase.InquiryGetAllUseCase;
 import com.woomzip.common.annotation.ApplicationService;
 import com.woomzip.domainmysql.inquiry.dto.response.InquiryResponse;
 import com.woomzip.domainmysql.inquiry.entity.Inquiry;

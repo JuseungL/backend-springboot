@@ -8,6 +8,8 @@ import com.woomzip.domainmysql.vendor.entity.Vendor;
 import com.woomzip.domainmysql.vendor.service.VendorQueryService;
 import lombok.RequiredArgsConstructor;
 
+import java.util.LinkedList;
+
 @ApplicationService
 @RequiredArgsConstructor
 public class ProductCreateUseCaseImpl implements ProductCreateUseCase {

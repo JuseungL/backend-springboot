@@ -14,14 +14,6 @@ public class VendorCommandService {
 
     @Transactional
     public Vendor createVendor(VendorCreateRequest vendorCreateRequest) {
-        Vendor vendor = Vendor.builder()
-                .representativeName(vendorCreateRequest.representativeName())
-                .representativeImageUrl(vendorCreateRequest.representativeImageUrl())
-                .representativeIntro(vendorCreateRequest.representativeIntro())
-                .vendorName(vendorCreateRequest.vendorName())
-                .vendorIntro(vendorCreateRequest.vendorIntro())
-                .build();
-
-        return vendorRepository.save(vendor);
+        return vendorRepository.save(VendorCreateRequest.toEntity(vendorCreateRequest));
     }
 }

@@ -1,20 +1,25 @@
 package com.woomzip.domainmysql.inquiry.dto.request;
 
+import com.woomzip.domainmysql.inquiry.entity.Inquiry;
 import com.woomzip.domainmysql.inquiry.enums.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Schema(description = "문의 생성에 필요한 정보")
 public record InquiryCreateRequest(
         @Schema(description = "문의자의 이름", example = "홍길동", required = true)
         @NotNull(message = "문의자의 이름은 필수입니다.")
+        @Size(min = 2, max = 100, message = "문의자의 이름은 2자 이상 100자 이하로 입력해야 합니다.")
         String name,
 
         @Schema(description = "추가 요청사항", example = "기타 문의 사항", required = false)
+        @Size(max = 1000, message = "추가 요청사항은 1000자 이하로 입력해야 합니다.")
         String additionalRequest,
 
         @Schema(description = "연락처", example = "010-1234-5678", required = true)
         @NotNull(message = "연락처는 필수입니다.")
+        @Size(max = 50, message = "연락처는 50자 이하로 입력해야 합니다.")
         String contact,
 
         @Schema(description = "응답 방식", example = "CALL", required = true)
@@ -32,7 +37,9 @@ public record InquiryCreateRequest(
         @NotNull(message = "위치는 필수입니다.")
         Location location,
 
+
         @Schema(description = "토지 소유 여부", example = "true", required = true)
+        @NotNull(message = "토지 소유 여부는 필수입니다.")
         boolean isLandOwner,
 
         @Schema(description = "예산", example = "50000000", required = true)
@@ -62,4 +69,24 @@ public record InquiryCreateRequest(
         @Schema(description = "가장 중요하게 생각하는 사항", example = "COST_EFFICIENCY", required = true)
         @NotNull(message = "가장 중요하게 생각하는 사항은 필수입니다.")
         Priority priority
-) {}
+) {
+        public static Inquiry toEntity(InquiryCreateRequest request) {
+                return Inquiry.builder()
+                        .name(request.name())
+                        .additionalRequest(request.additionalRequest())
+                        .contact(request.contact())
+                        .responseType(request.responseType())
+                        .productId(request.productId())
+                        .purpose(request.purpose())
+                        .location(request.location())
+                        .isLandOwner(request.isLandOwner())
+                        .budget(request.budget())
+                        .landArea(request.landArea())
+                        .landSlope(request.landSlope())
+                        .landAccess(request.landAccess())
+                        .helpType(request.helpType())
+                        .startPlan(request.startPlan())
+                        .priority(request.priority())
+                        .build();
+        }
+}

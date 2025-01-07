@@ -17,26 +17,25 @@ public class ProductTemplate {
     @Column(name = "product_template_id")
     private Long id;
 
-    @Column(name = "title", nullable = false)
-    private String title;
+    @Column(name = "title", nullable = false, length = 50)
+    private String title; // 제품 템플릿 제목
 
-    @Column(name = "description", nullable = false, length = 1000)
-    private String description;
+    @Column(name = "description", nullable = false, length = 500)
+    private String description; // 제품 템플릿 설명
 
-    @Column(name = "product_template_image_url", nullable = false)
-    private String productTemplateImageUrl;
+    @Column(name = "product_template_image_url", nullable = true, length = 255)
+    private String productTemplateImageUrl; // 제품 템플릿 이미지
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product product; // 제품 ID (어느 제품의 템플릿인지 식별)
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "template_type", nullable = false)
-    private ProductTemplateType productTemplateType;
-
+    @Column(name = "template_type", nullable = false, length = 15)
+    private ProductTemplateType productTemplateType; // 제품 템플릿 타입
 
     @Column(name = "product_template_index", nullable = false)
-    private int index;
+    private int index; // 템플릿 렌더링 순서
 
     @Builder
     public ProductTemplate(String title, String description, String productTemplateImageUrl, Product product, ProductTemplateType productTemplateType, int index) {

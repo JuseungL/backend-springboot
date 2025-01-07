@@ -7,6 +7,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ *  제휴 업체 엔티티
+ */
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -16,20 +19,20 @@ public class Vendor extends BaseTimeEntity {
     @Column(name = "vendor_id")
     private Long id;
 
-    @Column(name = "representative_name", nullable = false, length = 100)
-    private String representativeName;
+    @Column(name = "representative_name", nullable = false, length = 20)
+    private String representativeName; // 대표 성함
 
-    @Column(name = "representative_image_url")
-    private String representativeImageUrl;
+    @Column(name = "representative_image_url", nullable = false, length = 255)
+    private String representativeImageUrl; // 대표 이미지
 
     @Column(name = "representative_intro", length = 500)
-    private String representativeIntro;
+    private String representativeIntro; // 대표 소개
 
-    @Column(name = "vendor_name", nullable = false, length = 100)
-    private String vendorName;
+    @Column(name = "vendor_name", nullable = false, length = 20)
+    private String vendorName; // 업체 이름
 
-    @Column(name = "vendor_intro", length = 1000)
-    private String vendorIntro;
+    @Column(name = "vendor_intro", nullable = false, length = 500)
+    private String vendorIntro; // 업체 설명
 
     @Builder
     public Vendor(String representativeName, String representativeImageUrl, String vendorName, String representativeIntro, String vendorIntro) {

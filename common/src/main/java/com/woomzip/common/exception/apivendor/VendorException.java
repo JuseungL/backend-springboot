@@ -4,5 +4,5 @@ import com.woomzip.common.exception.BaseErrorCode;
 import com.woomzip.common.exception.CustomException;
 
 public class VendorException extends CustomException {
-    public VendorException(BaseErrorCode errorCode) {super(errorCode);}
+    public VendorException(BaseErrorCode bseErrorCode) {super(bseErrorCode);}
 }

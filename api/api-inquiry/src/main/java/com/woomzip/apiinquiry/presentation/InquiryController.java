@@ -25,7 +25,9 @@ public class InquiryController {
             summary = "문의 생성 API",
             description = "문의를 생성하기 위한 API 입니다. 문의를 생성합니다."
     )
-    public ApplicationResponse<String> createInquiries(@Valid @RequestBody InquiryCreateRequest inquiryCreateRequests) {
+    public ApplicationResponse<String> createInquiries(
+            @Valid @RequestBody InquiryCreateRequest inquiryCreateRequests
+    ) {
         inquiryCreateUseCase.createInquiry(inquiryCreateRequests);
         return ApplicationResponse.created("문의 등록 성공");
     }
@@ -33,9 +35,9 @@ public class InquiryController {
     @GetMapping
     @Operation(
             summary = "문의 전체 조회 API",
-            description = "모든 문의사항을 조회할 수 있는 API입니다. 등록된 문의 목록을 반환합니다."
+            description = "모든 문의사항을 조회할 수 있는 API 입니다. 등록된 문의 목록을 반환합니다."
     )
-    public ApplicationResponse<List<InquiryResponse>> getAllInquiries() {;
+    public ApplicationResponse<List<InquiryResponse>> getAllInquiries() {
         return ApplicationResponse.ok(inquiryGetAllUseCase.getAllInquiries());
     }
 }

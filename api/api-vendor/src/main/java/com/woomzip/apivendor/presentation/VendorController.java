@@ -4,6 +4,7 @@ import com.woomzip.apivendor.usecase.VendorCreateUseCase;
 import com.woomzip.common.response.ApplicationResponse;
 import com.woomzip.domainmysql.vendor.dto.request.VendorCreateRequest;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "제휴 업체 관련 API", description = "제휴 업체와 관련된 API 명세입니다.")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/vendors")
@@ -19,8 +21,11 @@ public class VendorController {
     @PostMapping
     @Operation(
             summary = "모듈러 주택 제작 업체 등록 API",
-            description = "새로운 모듈러 주택 제작 업체를 등록합니다.")
-    public ApplicationResponse<String> createVendor(@Valid @RequestBody VendorCreateRequest vendorCreateRequest) {
+            description = "새로운 모듈러 주택 제작 업체를 등록합니다."
+    )
+    public ApplicationResponse<String> createVendor(
+            @Valid @RequestBody VendorCreateRequest vendorCreateRequest
+    ) {
         vendorCreateUseCase.createVendor(vendorCreateRequest);
         return ApplicationResponse.created("모듈러 주택 제작 업체 등록 성공");
     }

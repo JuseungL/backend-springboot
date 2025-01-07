@@ -61,17 +61,20 @@ public class ApplicationResponse<T> {
                 .result(ApplicationResult.builder()
                         .code(HttpStatus.BAD_REQUEST.value())
                         .message("잘못된 요청입니다.")
-                        .build())
+                        .build()
+                )
                 .payload(payload)
                 .build();
     }
 
     public static <T> ApplicationResponse<T> badRequest(T payload, String message) {
         return ApplicationResponse.<T>builder()
-                .result(ApplicationResult.builder()
-                        .code(HttpStatus.BAD_REQUEST.value())
-                        .message(message)
-                        .build())
+                .result(
+                        ApplicationResult.builder()
+                                .message(message)
+                                .code(HttpStatus.BAD_REQUEST.value())
+                                .build()
+                )
                 .payload(payload)
                 .build();
     }
@@ -118,10 +121,12 @@ public class ApplicationResponse<T> {
 
     public static <T> ApplicationResponse<T> custom(T payload, Integer code, String message) {
         return ApplicationResponse.<T>builder()
-                .result(ApplicationResult.builder()
-                        .code(code)
-                        .message(message)
-                        .build())
+                .result(
+                        ApplicationResult.builder()
+                            .code(code)
+                            .message(message)
+                            .build()
+                )
                 .payload(payload)
                 .build();
     }

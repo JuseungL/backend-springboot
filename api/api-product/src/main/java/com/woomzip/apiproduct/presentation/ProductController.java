@@ -9,6 +9,8 @@ import com.woomzip.domainmysql.product.dto.response.ProductGetAllResponse;
 import com.woomzip.domainmysql.product.dto.response.ProductGetResponse;
 import com.woomzip.domainmysql.product.entity.Product;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +37,9 @@ public class ProductController {
             summary = "제품 생성 API",
             description = "제품을 생성하기 위한 API 입니다. 제품을 생성합니다."
     )
-    public ApplicationResponse<String> createProduct(@Valid @RequestBody ProductCreateRequest productCreateRequest) {
+    public ApplicationResponse<String> createProduct(
+            @Valid @RequestBody ProductCreateRequest productCreateRequest
+    ) {
         productCreateUseCase.createProduct(productCreateRequest);
         return ApplicationResponse.created("제품 등록 성공");
     }
@@ -54,7 +58,14 @@ public class ProductController {
             summary = "특정 제품 조회 API",
             description = "특정 제품을 조회할 수 있는 API입니다. 등록된 제품 상세 정보를 id 기반으로 조회 후 반환합니다."
     )
-    public ApplicationResponse<ProductGetResponse> getProductById(@PathVariable Long id) {
+    public ApplicationResponse<ProductGetResponse> getProductById(
+            @Parameter(
+                    name = "id",
+                    description = "조회할 제품의 ID(식별자)",
+                    required = true,
+                    example = "1",
+                    in = ParameterIn.PATH // 명시적으로 경로 변수임을 지정
+            ) @PathVariable Long id) {
         return ApplicationResponse.ok(productGetUseCase.getProduct(id));
     }
 }

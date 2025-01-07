@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProductQueryService {
     private final ProductRepository productRepository;
-    private final ProductTemplateRepository productTemplateRepository;
 
     public List<ProductGetAllResponse> getAllProducts() {
         // Fetch all products

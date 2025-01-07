@@ -44,54 +44,54 @@ public class Product extends BaseTimeEntity {
     @Column(name = "warranty_period", nullable = false)
     private int warrantyPeriod;  // AS 보증기간
 
-    @Column(name = "special_feature", length = 1000)
+    @Column(name = "special_feature", nullable = true, length = 255)
     private String specialFeature;  // 제품 특이사항
 
-    @Column(name = "structure_material", length = 1000)
+    @Column(name = "structure_material", nullable = true, length = 255)
     private String structureMaterial;  // 구조자재
 
-    @Column(name = "wall_material", length = 1000)
+    @Column(name = "wall_material", nullable = true, length = 255)
     private String wallMaterial;  // 벽체자재
 
-    @Column(name = "insulation_material", length = 1000)
+    @Column(name = "insulation_material", nullable = true, length = 255)
     private String insulationMaterial;  // 단열자재
 
-    @Column(name = "heating_method", length = 1000)
+    @Column(name = "heating_method", nullable = true, length = 255)
     private String heatingMethod;  // 난방방법
 
-    @Column(name = "interior_material", length = 1000)
+    @Column(name = "interior_material", nullable = true, length = 255)
     private String interiorMaterial;  // 내장자재
 
-    @Column(name = "window_material", length = 1000)
+    @Column(name = "window_material", nullable = true, length = 255)
     private String windowMaterial;  // 창호자재
 
-    @Column(name = "exterior_material", length = 1000)
+    @Column(name = "exterior_material", nullable = true, length = 255)
     private String exteriorMaterial;  // 외장자재
 
-    @Column(name = "roof_material", length = 1000)
+    @Column(name = "roof_material", nullable = true, length = 255)
     private String roofMaterial;  // 지붕자재
 
-    @Column(name = "kitchen_material", length = 1000)
+    @Column(name = "kitchen_material", nullable = true, length = 255)
     private String kitchenMaterial;  // 주방자재
 
-    @Column(name = "bathroom_material", length = 1000)
+    @Column(name = "bathroom_material", nullable = true, length = 255)
     private String bathroomMaterial;  // 욕실자재
 
-    @Column(name = "lighting_material", length = 1000)
+    @Column(name = "lighting_material", nullable = true, length = 255)
     private String lightingMaterial;  // 조명자재
 
-    @Column(name = "included_furniture", length = 1000)
+    @Column(name = "included_furniture", nullable = true, length = 255)
     private String includedFurniture;  // 포함가구
 
-    @Column(name = "other_detail", length = 1000)
+    @Column(name = "other_detail", nullable = true, length = 500)
     private String otherDetail;  // 기타사항
+
+    @Column(name = "price_includes", length = 500)
+    private String priceIncludes;  // 가격에 포함된 사항
 
     @ManyToOne
     @JoinColumn(name = "vendor_id")
-    private Vendor vendor;  // 디자인 및 제작사
-
-    @Column(name = "price_includes", length = 1000)
-    private String priceIncludes;  // 가격에 포함된 사항
+    private Vendor vendor;  // 제휴 업체 ID (어느 제휴 업체의 제품인지 식별)
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductTemplate> productTemplates;
