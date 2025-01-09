@@ -97,7 +97,6 @@ public class Product extends BaseTimeEntity {
     private List<ProductTemplate> productTemplates;
 
     @Builder
-
     public Product(String productName, String productImageUrl, int price, int bedroom, Integer bathroom, Double realUsableArea, Double buildingArea, int warrantyPeriod, String specialFeature, String structureMaterial, String wallMaterial, String insulationMaterial, String heatingMethod, String interiorMaterial, String windowMaterial, String exteriorMaterial, String roofMaterial, String kitchenMaterial, String bathroomMaterial, String lightingMaterial, String includedFurniture, String otherDetail, Vendor vendor, String priceIncludes) {
         this.productName = productName;
         this.productImageUrl = productImageUrl;

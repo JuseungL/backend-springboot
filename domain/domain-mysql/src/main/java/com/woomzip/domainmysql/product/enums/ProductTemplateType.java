@@ -1,8 +1,5 @@
 package com.woomzip.domainmysql.product.enums;
 
-import io.swagger.v3.oas.annotations.media.Schema;
-
-@Schema(description = "제품 템플릿 타입")
 public enum ProductTemplateType {
     FULL("FULL"),
     HALF("HALF"),
