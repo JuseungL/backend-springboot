@@ -17,10 +17,10 @@ public class ProductTemplate {
     @Column(name = "product_template_id")
     private Long id;
 
-    @Column(name = "title", nullable = false, length = 50)
+    @Column(name = "title", nullable = true, length = 50)
     private String title; // 제품 템플릿 제목
 
-    @Column(name = "description", nullable = false, length = 500)
+    @Column(name = "description", nullable = true, length = 500)
     private String description; // 제품 템플릿 설명
 
     @Column(name = "product_template_image_url", nullable = true, length = 255)
@@ -30,8 +30,8 @@ public class ProductTemplate {
     @JoinColumn(name = "product_id")
     private Product product; // 제품 ID (어느 제품의 템플릿인지 식별)
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "template_type", nullable = false, length = 15)
+    @Enumerated(EnumType.STRING)
     private ProductTemplateType productTemplateType; // 제품 템플릿 타입
 
     @Column(name = "product_template_index", nullable = false)

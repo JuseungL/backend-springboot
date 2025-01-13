@@ -1,0 +1,119 @@
+{
+  "result": {
+    "code": 200,
+    "message": "API 호출 성공"
+  },
+  "payload": {
+    "productId": 3,
+    "productName": "예시 제품",
+    "productImageUrl": "https://image1.jpg",
+    "price": 500000,
+    "bedroom": 3,
+    "bathroom": 2,
+    "realUsableArea": 30.5,
+    "buildingArea": 50,
+    "warrantyPeriod": 1,
+    "specialFeature": "특이사항 없음",
+    "structureMaterial": "철근",
+    "wallMaterial": "시멘트",
+    "insulationMaterial": "스티로폼",
+    "heatingMethod": "가스",
+    "interiorMaterial": "목재",
+    "windowMaterial": "PVC",
+    "exteriorMaterial": "석재",
+    "roofMaterial": "철판",
+    "kitchenMaterial": "대리석",
+    "bathroomMaterial": "세라믹",
+    "lightingMaterial": "LED",
+    "includedFurniture": "없음",
+    "otherDetail": "기타 사항 없음",
+    "priceIncludes": "배달비 포함",
+    "vendorId": 1,
+    "vendorName": "움집",
+    "productTemplates": {
+      "FULL": [
+        {
+          "templateId": 3,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "FULL",
+          "index": 1
+        },
+        {
+          "templateId": 10,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "FULL",
+          "index": 2
+        }
+      ],
+      "HALF": [
+        {
+          "templateId": 4,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "HALF",
+          "index": 3
+        },
+        {
+          "templateId": 5,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "HALF",
+          "index": 4
+        },
+        {
+          "templateId": 11,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "HALF",
+          "index": 5
+        }
+      ],
+      "CARD": {
+        "productTemplateType": "CARD_TITLE",
+        "title": "주변 풍경 뷰",
+        "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+        "index": 6,
+        "cards": [
+          {
+            "productTemplateType": "CARD",
+            "title": "카드1",
+            "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+            "productTemplateImageUrl": "http://example.com/image.jpg",
+            "index": 7
+          },
+          {
+            "productTemplateType": "CARD",
+            "title": "카드2",
+            "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+            "productTemplateImageUrl": "http://example.com/image.jpg",
+            "index": 8
+          },
+          {
+            "productTemplateType": "CARD",
+            "title": "카드3",
+            "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+            "productTemplateImageUrl": "http://example.com/image.jpg",
+            "index": 9
+          }
+        ]
+      },
+      "MASTER_PLAN": [
+        {
+          "templateId": 12,
+          "title": "주변 풍경 뷰",
+          "description": "보시는 것과 같이 주변 풍경이 아름답습니다.",
+          "productTemplateImageUrl": "http://example.com/image.jpg",
+          "productTemplateType": "MASTER_PLAN",
+          "index": 10
+        }
+      ]
+    }
+  }
+}

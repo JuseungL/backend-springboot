@@ -7,6 +7,7 @@ import com.woomzip.domainmysql.product.service.ProductQueryService;
 import lombok.RequiredArgsConstructor;
 
 @ApplicationService
+
 @RequiredArgsConstructor
 public class ProductGetUseCaseImpl implements ProductGetUseCase {
     private final ProductQueryService productQueryService;

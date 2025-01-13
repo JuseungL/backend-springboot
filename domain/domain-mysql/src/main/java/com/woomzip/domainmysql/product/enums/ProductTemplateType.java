@@ -1,5 +1,8 @@
 package com.woomzip.domainmysql.product.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ProductTemplateType {
     FULL("FULL"),
     HALF("HALF"),
@@ -12,8 +15,9 @@ public enum ProductTemplateType {
     ProductTemplateType(String description) {
         this.description = description;
     }
-
     public String getDescription() {
         return description;
     }
+
 }
+
