@@ -2,10 +2,15 @@ package com.woomzip.domainmysql.product.dto.response;
 
 import com.woomzip.domainmysql.product.entity.Product;
 import com.woomzip.domainmysql.product.entity.ProductTemplate;
+import com.woomzip.domainmysql.vendor.entity.Vendor;
 
 import java.util.ArrayList;
 import java.util.List;
 public record ProductGetResponse(
+        // 제휴 업체 정보
+        Vendor vendor,
+
+        // 제품 데이터
         Long productId,
         String productName,
         String productImageUrl,
@@ -30,11 +35,11 @@ public record ProductGetResponse(
         String includedFurniture,
         String otherDetail,
         String priceIncludes,
-        Long vendorId,
-        String vendorName,
+
+        // 템플릿
         List<FullResponse> fullTemplates,
         List<HalfResponse> halfTemplates,
-        CardEntireResponse cardEntireResponse,  // 추가된 필드
+        CardEntireResponse cardEntireResponse,
         List<MasterPlanResponse> masterPlanTemplates
 ) {
     public record FullResponse(
@@ -76,16 +81,13 @@ public record ProductGetResponse(
     ) {}
 
     public static ProductGetResponse fromProduct(Product product) {
-        Long vendorId = product.getVendor().getId();
-        String vendorName = product.getVendor().getVendorName();
-
+        // 템플릿 처리
         List<FullResponse> fullTemplates = new ArrayList<>();
         List<HalfResponse> halfTemplates = new ArrayList<>();
         List<CardResponse> cardTemplates = new ArrayList<>();
         List<MasterPlanResponse> masterPlanTemplates = new ArrayList<>();
         CardEntireResponse cardEntireResponse = null;
 
-        // 한 번의 스트림 순회로 모든 타입 확인 및 리스트 추가
         for (ProductTemplate template : product.getProductTemplates()) {
             switch (template.getProductTemplateType()) {
                 case FULL:
@@ -133,12 +135,12 @@ public record ProductGetResponse(
                     ));
                     break;
                 default:
-                    // 다른 타입은 처리하지 않음 (필요시 다른 처리 추가)
                     break;
             }
         }
 
         return new ProductGetResponse(
+                product.getVendor(),
                 product.getId(),
                 product.getProductName(),
                 product.getProductImageUrl(),
@@ -163,11 +165,9 @@ public record ProductGetResponse(
                 product.getIncludedFurniture(),
                 product.getOtherDetail(),
                 product.getPriceIncludes(),
-                vendorId,
-                vendorName,
                 fullTemplates,
                 halfTemplates,
-                cardEntireResponse,  // CardEntireResponse 추가
+                cardEntireResponse,
                 masterPlanTemplates
         );
     }
