@@ -23,7 +23,7 @@ public class ProductTemplate {
     @Column(name = "description", nullable = true, length = 500)
     private String description; // 제품 템플릿 설명
 
-    @Column(name = "product_template_image_url", nullable = true, length = 255)
+    @Column(name = "product_template_image_url", nullable = true, columnDefinition = "TEXT")
     private String productTemplateImageUrl; // 제품 템플릿 이미지
 
     @ManyToOne
