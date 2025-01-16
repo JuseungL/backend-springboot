@@ -20,10 +20,13 @@ public class Product extends BaseTimeEntity {
     @Column(name = "product_id")
     private Long id;
 
-    @Column(name = "product_name", nullable = false)
+    @Column(name = "product_name", nullable = false, length = 30)
     private String productName;  // 제품 이름
 
-    @Column(name = "product_image_url", nullable = false)
+    @Column(name = "product_intro", nullable = false, length = 255)
+    private String productIntro;
+
+    @Column(name = "product_image_url", nullable = false,  length = 255)
     private String productImageUrl;  // 제품 이미지
 
     @Column(name = "price", nullable = false)
@@ -97,8 +100,9 @@ public class Product extends BaseTimeEntity {
     private List<ProductTemplate> productTemplates;
 
     @Builder
-    public Product(String productName, String productImageUrl, int price, int bedroom, Integer bathroom, Double realUsableArea, Double buildingArea, int warrantyPeriod, String specialFeature, String structureMaterial, String wallMaterial, String insulationMaterial, String heatingMethod, String interiorMaterial, String windowMaterial, String exteriorMaterial, String roofMaterial, String kitchenMaterial, String bathroomMaterial, String lightingMaterial, String includedFurniture, String otherDetail, Vendor vendor, String priceIncludes) {
+    public Product(String productName, String productIntro, String productImageUrl, int price, int bedroom, Integer bathroom, Double realUsableArea, Double buildingArea, int warrantyPeriod, String specialFeature, String structureMaterial, String wallMaterial, String insulationMaterial, String heatingMethod, String interiorMaterial, String windowMaterial, String exteriorMaterial, String roofMaterial, String kitchenMaterial, String bathroomMaterial, String lightingMaterial, String includedFurniture, String otherDetail, Vendor vendor, String priceIncludes) {
         this.productName = productName;
+        this.productIntro = productIntro;
         this.productImageUrl = productImageUrl;
         this.price = price;
         this.bedroom = bedroom;

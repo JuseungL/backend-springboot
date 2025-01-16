@@ -5,6 +5,7 @@ import com.woomzip.domainmysql.product.entity.ProductTemplate;
 import com.woomzip.domainmysql.product.enums.ProductTemplateType;
 import com.woomzip.domainmysql.vendor.entity.Vendor;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -15,10 +16,17 @@ import java.util.List;
 public record ProductCreateRequest(
         @Schema(description = "제품 이름", example = "예시 제품", required = true)
         @NotNull(message = "제품 이름은 필수입니다.")
+        @Size(max = 30, message = "제품명은 최대 30자까지 입력 가능합니다.")
         String productName,
+
+        @Schema(description = "제품 설명", example = "제품에 대한 설명입니다.", required = true)
+        @NotNull(message = "제품 설명은 필수입니다.")
+        @Size(max = 255, message = "제품 설명은 최대 255자까지 입력 가능합니다.")
+        String productIntro,
 
         @Schema(description = "제품 이미지", example = "https://image1.jpg", required = true)
         @NotNull(message = "제품 이미지는 필수입니다.")
+        @Size(max = 255, message = "제품 대표 이미지 URL은 최대 255자까지 입력 가능합니다.")
         String productImageUrl,
 
         @Schema(description = "가격", example = "500000", required = true)
@@ -34,10 +42,12 @@ public record ProductCreateRequest(
         int bathroom,
 
         @Schema(description = "실사용 평수(소숫점 한자리까지)", example = "30.5", required = true)
+        @Digits(integer = 5, fraction = 1, message = "소수점 한 자리까지 허용됩니다.")
         @NotNull(message = "실사용 평수는 필수입니다.")
         Double realUsableArea,
 
-        @Schema(description = "건축 면적", example = "50.0", required = true)
+        @Schema(description = "건축 면적(소숫점 한자리까지)", example = "50.0", required = true)
+        @Digits(integer = 3, fraction = 1, message = "소수점 한 자리까지 허용됩니다.")
         @NotNull(message = "건축 면적은 필수입니다.")
         Double buildingArea,
 
@@ -115,6 +125,7 @@ public record ProductCreateRequest(
         public static Product toEntity(ProductCreateRequest request, Vendor vendor) {
                 return new Product(
                         request.productName(),
+                        request.productIntro(),
                         request.productImageUrl(),
                         request.price(),
                         request.bedroom(),
@@ -152,6 +163,7 @@ public record ProductCreateRequest(
             String description,
 
             @Schema(description = "제품 템플릿 이미지 URL", example = "http://example.com/image.jpg", required = false)
+            @Size(max = 65535, message = "템플릿에서 제품 설명은 최대 65,535자까지 입력 가능합니다.")
             String productTemplateImageUrl,
 
             @Schema(description = "템플릿 유형", example = "FULL", required = true)
@@ -160,7 +172,7 @@ public record ProductCreateRequest(
 
             @Schema(description = "템플릿 인덱스", example = "1", required = true)
             @NotNull(message = "템플릿 인덱스는 필수입니다.")
-            int index
+            Long index
         ) {
                 public static ProductTemplate toEntity(ProductTemplateCreateRequest templateRequest, Product product) {
                         return new ProductTemplate(

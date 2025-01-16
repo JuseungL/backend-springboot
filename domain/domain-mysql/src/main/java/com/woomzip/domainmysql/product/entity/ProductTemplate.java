@@ -35,10 +35,10 @@ public class ProductTemplate {
     private ProductTemplateType productTemplateType; // 제품 템플릿 타입
 
     @Column(name = "product_template_index", nullable = false)
-    private int index; // 템플릿 렌더링 순서
+    private Long index; // 템플릿 렌더링 순서
 
     @Builder
-    public ProductTemplate(String title, String description, String productTemplateImageUrl, Product product, ProductTemplateType productTemplateType, int index) {
+    public ProductTemplate(String title, String description, String productTemplateImageUrl, Product product, ProductTemplateType productTemplateType, Long index) {
         this.title = title;
         this.description = description;
         this.productTemplateImageUrl = productTemplateImageUrl;

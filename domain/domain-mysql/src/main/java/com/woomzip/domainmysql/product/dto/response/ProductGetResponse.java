@@ -13,6 +13,7 @@ public record ProductGetResponse(
         // 제품 데이터
         Long productId,
         String productName,
+        String productIntro,
         String productImageUrl,
         int price,
         int bedroom,
@@ -47,7 +48,7 @@ public record ProductGetResponse(
             String title,
             String description,
             String productTemplateImageUrl,
-            int index
+            Long index
     ) {}
 
     public record HalfResponse(
@@ -55,7 +56,7 @@ public record ProductGetResponse(
             String title,
             String description,
             String productTemplateImageUrl,
-            int index
+            Long index
     ) {}
 
     public record CardEntireResponse(
@@ -69,7 +70,7 @@ public record ProductGetResponse(
             String title,
             String description,
             String productTemplateImageUrl,
-            int index
+            Long index
     ) {}
 
     public record MasterPlanResponse(
@@ -77,7 +78,7 @@ public record ProductGetResponse(
             String title,
             String description,
             String productTemplateImageUrl,
-            int index
+            Long index
     ) {}
 
     public static ProductGetResponse fromProduct(Product product) {
@@ -143,6 +144,7 @@ public record ProductGetResponse(
                 product.getVendor(),
                 product.getId(),
                 product.getProductName(),
+                product.getProductIntro(),
                 product.getProductImageUrl(),
                 product.getPrice(),
                 product.getBedroom(),
