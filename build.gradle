@@ -55,7 +55,7 @@ subprojects { // 서브 프로젝트
 	}
 }
 
-configure(subprojects.findAll { it.name != 'common' && it.name != 'execute-server' }) {
+configure(allprojects.findAll { it.name != 'common' && it.name != 'execute-server' }) {
 	dependencies {
 		implementation project(':common')
 	}
