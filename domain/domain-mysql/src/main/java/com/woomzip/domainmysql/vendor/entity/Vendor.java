@@ -22,7 +22,7 @@ public class Vendor extends BaseTimeEntity {
     @Column(name = "representative_name", nullable = false, length = 20)
     private String representativeName; // 대표 성함
 
-    @Column(name = "representative_image_url", nullable = false, length = 255)
+    @Column(name = "representative_image_url", nullable = false, length = 500)
     private String representativeImageUrl; // 대표 이미지
 
     @Column(name = "representative_intro", length = 500)

@@ -26,7 +26,7 @@ public class Product extends BaseTimeEntity {
     @Column(name = "product_intro", nullable = false, length = 255)
     private String productIntro;
 
-    @Column(name = "product_image_url", nullable = false,  length = 255)
+    @Column(name = "product_image_url", nullable = false,  length = 500)
     private String productImageUrl;  // 제품 이미지
 
     @Column(name = "price", nullable = false)
