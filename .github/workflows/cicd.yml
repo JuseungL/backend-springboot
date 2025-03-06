@@ -1,0 +1,56 @@
+#name: CI/CD with Git Actions & ECR.
+#
+#on:
+#  push:
+#    branches:
+#      - main
+#
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
+#
+#    steps:
+#      - name: Checkout source code
+#        uses: actions/checkout@v3
+#
+#      - name: Set .env file
+#        run: echo "${{ secrets.SERVER_ENV }}" | base64 --decode > .env
+#
+#      - name: Set up Node.js
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '18'
+#
+#      - name: Configure AWS credentials
+#        uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          aws-region: ap-northeast-2
+#
+#      - name: Login to Amazon ECR
+#        uses: aws-actions/amazon-ecr-login@v1
+#
+#      - name: Build and push Docker image to ECR
+#        env:
+#          ECR_REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com
+#          ECR_REPOSITORY: woomzip-ecr
+#          IMAGE_TAG: server
+#        run: |
+#          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+#          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+#
+#
+#      # - name: Deploy to EC2 instance
+#      #   uses: appleboy/ssh-action@master
+#      #   with:
+#      #     host: ${{ secrets.SSH_HOST }} # 퍼블릭 IPv4 DNS
+#      #     username: ubuntu
+#      #     key: ${{ secrets.SSH_KEY }} # cat {ec2_instance_name}.pem
+#      #     port: ${{ secrets.SSH_PORT }} # 보안 그룹 인바운드 규칙의 SSH Port Number
+#      #     script: |
+#      #       sudo docker login -u AWS -p $(aws ecr get-login-password --region ap-northeast-2) ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com
+#      #       sudo docker pull ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/woomzip-ecr:server
+#      #       cd /home/ubuntu/workspace/back
+#      #       sudo docker-compose down
+#      #       sudo docker-compose up -d
