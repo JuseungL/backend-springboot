@@ -22,3 +22,11 @@
 * 문의 건수 5건
 * 문의 제품 34개
 * 문의 단가 약 15억 원
+
+<img width="1438" alt="image" src="https://github.com/user-attachments/assets/453bf42a-0920-438a-8ada-2e846ef9121b" />
+<img width="1442" alt="image" src="https://github.com/user-attachments/assets/e9a22c97-9a1a-4b2c-8cc3-d7f374130bed" />
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/2d884849-052d-4a9f-9df4-780f19ee806f" />
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/4fb05050-fcfc-469d-ad35-2acbd5056b9d" />
+<img width="1436" alt="image" src="https://github.com/user-attachments/assets/7128e0ff-c605-4e7b-8fa1-f1f40df914e6" />
+<img width="1433" alt="image" src="https://github.com/user-attachments/assets/f2c65e0c-0434-40b5-9de6-1e46e22afcda" />
+
